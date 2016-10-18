@@ -8,9 +8,15 @@ use Teng::Schema::Declare;
 base_row_class 'BBS::DB::Row';
 
 table {
-    name 'member';
+    name 'sessions';
     pk 'id';
-    columns qw(id name);
+    columns qw(session_data);
+};
+
+table {
+    name 'entry';
+    pk 'entry_id';
+    columns qw(entry_id body);
 };
 
 1;
