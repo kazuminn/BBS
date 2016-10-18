@@ -57,6 +57,15 @@ __PACKAGE__->load_plugin('Web::Auth', {
 			warn $access_token_secret;
 			$c->session->set('name' => $screen_name);
 			$c->session->set('site' => 'twitter');
+
+			#insert database
+			$c->db->insert(
+				user => +{
+					user_id => $user_id,
+					screen_name => $screen_name,
+					session => $c->session->set('name' => $screen_name),
+				}
+			);
 			return $c->redirect('/BBS');
 		}
 	});

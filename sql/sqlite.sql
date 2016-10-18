@@ -3,9 +3,10 @@ CREATE TABLE IF NOT EXISTS member (
     name         VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS sessions (
-    id           CHAR(72) PRIMARY KEY,
-    session_data TEXT
+CREATE TABLE IF NOT EXISTS user (
+    user_id           CHAR(100) PRIMARY KEY,
+    screen_name       TEXT,
+    session           CHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS entry (

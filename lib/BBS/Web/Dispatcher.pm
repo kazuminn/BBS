@@ -11,6 +11,9 @@ any '/' => sub {
 
 any '/BBS' => sub {
     my ($c) = @_;
+    my $cnt = $c->session->get('cnt'); /session get
+
+
 
     my @entries = $c->db->search(
         entry => {
@@ -22,7 +25,7 @@ any '/BBS' => sub {
     return $c->render( "BBS.tx" => { entries => \@entries, } );
 };
 
-post '/BBS/post' => sub {
+post '/post' => sub {
     my ($c) = @_;
 
     if (my $body = $c->req->param('body')) {
