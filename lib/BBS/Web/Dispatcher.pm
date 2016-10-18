@@ -6,6 +6,11 @@ use Amon2::Web::Dispatcher::Lite;
 
 any '/' => sub {
     my ($c) = @_;
+    return $c->render( "home.tx"   );
+};
+
+any '/BBS' => sub {
+    my ($c) = @_;
 
     my @entries = $c->db->search(
         entry => {
@@ -14,10 +19,10 @@ any '/' => sub {
             limit    => 10,
         }
     );
-    return $c->render( "index.tx" => { entries => \@entries, } );
+    return $c->render( "BBS.tx" => { entries => \@entries, } );
 };
 
-post '/post' => sub {
+post '/BBS/post' => sub {
     my ($c) = @_;
 
     if (my $body = $c->req->param('body')) {
@@ -27,7 +32,7 @@ post '/post' => sub {
             }
         );
     }
-    return $c->redirect('/');
+    return $c->redirect('/BBS');
 };
 
 1;
