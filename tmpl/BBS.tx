@@ -2,6 +2,11 @@
 
 : override content -> {
 
+こんにちは,
+    <: for $users -> $user { :>
+    <li><: $user.screen_name :>
+    <: } :>
+さん
 
 <form method="post" action="<: uri_for('/post') :>">
     <input type="text" name="body" />
@@ -10,7 +15,7 @@
 
 <ul>
     <: for $entries -> $entry { :>
-    <li><: $entry.entry_id :>. <: $entry.body :></li>
+    <li><: $entry.screen_name :>. <: $entry.body :></li>
     <: } :>
 </ul>
 

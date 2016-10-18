@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 CREATE TABLE IF NOT EXISTS entry (
-    entry_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    id           INTEGER NOT NULL PRIMARY KEY,
+    screen_name TEXT,
     body varchar(255) not null
 );

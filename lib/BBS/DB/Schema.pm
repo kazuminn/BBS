@@ -15,8 +15,8 @@ table {
 
 table {
     name 'entry';
-    pk 'entry_id';
-    columns qw/entry_id body/;
+    pk 'id';
+    columns qw/screen_name body/;
 };
 
 1;
