@@ -5,6 +5,8 @@ use utf8;
 use parent qw/BBS Amon2::Web/;
 use File::Spec;
 
+$ENV{'PERL_LWP_SSL_VERIFY_HOSTNAME'} = 0;
+
 # dispatcher
 use BBS::Web::Dispatcher;
 sub dispatch {
@@ -44,5 +46,20 @@ __PACKAGE__->add_trigger(
         $res->header( 'Cache-Control' => 'private' );
     },
 );
+
+__PACKAGE__->load_plugin('Web::Auth', {
+		module => 'Twitter',
+		on_finished => sub {
+			my ($c, $access_token, $access_token_secret, $user_id, $screen_name) = @_;
+			warn $user_id;
+			warn $screen_name;
+			warn $access_token;
+			warn $access_token_secret;
+			$c->session->set('name' => $screen_name);
+			$c->session->set('site' => 'twitter');
+			return $c->redirect('/');
+		}
+	});
+
 
 1;

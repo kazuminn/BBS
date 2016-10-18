@@ -9,4 +9,11 @@ my $dbpath = File::Spec->catfile($basedir, 'db', 'development.db');
             sqlite_unicode => 1,
         }
     ],
+Auth => +{
+	    Twitter => +{
+		    consumer_key    => 'VX8btJcvkLRv7LxYPPeUQqafq',
+		    consumer_secret => 'iRjSjEmsEmgHJdjyLLRLQayAEAjXg8gXUCF2PUL9eqgO8VJwS6',
+		    ssl => 0,
+	    },
+    },
 };
